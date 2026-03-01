@@ -27,7 +27,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 const userGrid = document.getElementById("user-grid");
-const loadBtn = document.getElementById("load-users");
+const loadBtn = document.getElementById("loadBtn");
 
 loadBtn.addEventListener("click", async () => {
   try {
@@ -60,6 +60,6 @@ function displayUsers(users) {
 
 const toggleBtn = document.getElementById("theme-toggle");
 
-themeToggle.addEventListener("click", () => {
+toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 });
