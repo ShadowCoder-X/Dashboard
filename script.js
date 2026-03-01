@@ -1,15 +1,13 @@
-const decreasseBtn = document.getElementById("dercrease-btn");
-const increasseBtn = document.getElementById("increase-btn");
+const decreasseBtn = document.getElementById("decrease");
+const increasseBtn = document.getElementById("increase");
 const counterDisplay = document.getElementById("counter");
 const resetBtn = document.getElementById("reset");
-const loadUsersBtn = document.getElementById("load-users");
-
-toggleBtn.addEventListener("click", function () {
-  document.body.classList.toggle("dark-mode");
-});
 
 let count = 0;
-//const counterDisplay = document.getElementById("counter-value");
+
+function updateCounter() {
+  counterDisplay.innerText = count;
+}
 
 increasseBtn.addEventListener("click", () => {
   count++;
@@ -17,18 +15,16 @@ increasseBtn.addEventListener("click", () => {
 });
 
 decreasseBtn.addEventListener("click", () => {
-  count--;
+  if (count > 0) {
+    count--;
+  }
   updateCounter();
 });
 
-document.getElementById("reset").addEventListener("click", () => {
+resetBtn.addEventListener("click", () => {
   count = 0;
   updateCounter();
 });
-
-function updateCounter() {
-  counterDisplay.innerText = count;
-}
 
 const userGrid = document.getElementById("user-grid");
 const loadBtn = document.getElementById("load-users");
@@ -52,12 +48,18 @@ function displayUsers(users) {
     card.className = "user-card";
 
     card.innerHTML = `
-        <h3> Name: ${user.name}</h3>
+        <h3>${user.name}</h3>
         <p>Email: ${user.email}</p>
         <p>Phone: ${user.phone}</p>
-        <P>Company: ${user.company}</p>
+        <P>Company: ${user.company.name}</p>
 `;
 
     userGrid.appendChild(card);
   });
 }
+
+const toggleBtn = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+});
